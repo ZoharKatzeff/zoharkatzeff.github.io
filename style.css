@@ -234,6 +234,7 @@ html[dir="rtl"] .reel-play svg { transform: none; }
 .contact { padding: clamp(80px, 11vw, 140px) var(--gutter); }
 .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 90px); max-width: 1240px; margin: 0 auto; }
 @media (max-width: 860px) { .contact-inner { grid-template-columns: 1fr; } }
+.contact-label { margin: 22px 0 12px; font-size: 18px; font-weight: 500; }
 .contact-links { display: grid; gap: 4px; margin-top: 26px; }
 .contact-links a { display: flex; align-items: center; gap: 14px; min-height: 48px; font-size: 17px; border-bottom: 1px solid var(--line); }
 .contact-links a:hover { color: var(--accent); }

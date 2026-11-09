@@ -122,7 +122,7 @@ function setLang(l, remember) {
   document.querySelectorAll("[data-en-placeholder]").forEach((el) => (el.placeholder = l === "en" ? el.dataset.enPlaceholder : el.dataset.hePlaceholder));
   $("#langBtn").textContent = l === "en" ? "עב" : "EN";
   $("#langBtn").setAttribute("aria-label", l === "en" ? "עברית" : "Switch to English");
-  document.title = l === "en" ? "Zohar Katzeff · Photo & Video" : "Zohar Katzeff · צילום ווידאו";
+  document.title = l === "en" ? "Zohar Katzeff · Stills & Video" : "Zohar Katzeff · צילום סטילס ווידאו";
   if (remember) { try { localStorage.setItem("lang", l); } catch (e) {} }
   renderAll();
 }
@@ -390,6 +390,11 @@ addEventListener("keydown", (e) => {
 });
 
 // ---------- Booking form -> WhatsApp ----------
+$("#waJump").addEventListener("click", (e) => {
+  e.preventDefault();
+  $("#bookForm").scrollIntoView({ behavior: "smooth", block: "center" });
+  setTimeout(() => $("#bookForm").name.focus({ preventScroll: true }), 450);
+});
 const sel = $("#serviceSelect");
 function renderSelect() {
   const v = sel.value;
