@@ -409,9 +409,18 @@ $("#bookForm").addEventListener("submit", (e) => {
   $("#formErr").hidden = !!name;
   if (!name) { f.name.focus(); return; }
   const svc = sel.options[sel.selectedIndex].text;
+  // Day-first date ("יום רביעי, 13/01/2027"), not the input's raw 2027-01-13 which reads backwards in Hebrew.
+  let date = "";
+  if (f.date.value) {
+    const [y, m, d] = f.date.value.split("-").map(Number);
+    const dt = new Date(y, m - 1, d);
+    const day = dt.toLocaleDateString(lang === "en" ? "en-GB" : "he-IL", { weekday: "long" });
+    const num = `${String(d).padStart(2, "0")}/${String(m).padStart(2, "0")}/${y}`;
+    date = lang === "en" ? `${day} ${num}` : `${day}, ⁦${num}⁩`;
+  }
   const lines = lang === "en"
-    ? [`Hi Zohar, I'm ${name}.`, `I'm interested in: ${svc}.`, f.date.value && `Date: ${f.date.value}`, f.details.value.trim()]
-    : [`היי זוהר, אני ${name}.`, `מתעניין/ת ב: ${svc}.`, f.date.value && `תאריך: ${f.date.value}`, f.details.value.trim()];
+    ? [`Hi Zohar, I'm ${name}.`, `I'm interested in: ${svc}.`, date && `Date: ${date}`, f.details.value.trim()]
+    : [`היי זוהר, אני ${name}.`, `מתעניין/ת ב: ${svc}.`, date && `תאריך: ${date}`, f.details.value.trim()];
   const text = lines.filter(Boolean).join("\n");
   window.open(`https://wa.me/${PHONE_INTL}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
 });
