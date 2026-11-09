@@ -12,3 +12,7 @@ Static site (no build step). Open with any static host: Netlify, GitHub Pages, C
 
 ## Preview locally
 `python -m http.server 8778` in this folder, then open http://localhost:8778 (add `?lang=en` for English).
+
+## Live site
+https://zoharkatzeff.github.io (GitHub Pages, repo ZoharKatzeff/zoharkatzeff.github.io).
+To publish changes: `git add -A && git commit -m "update" && git push` — live in ~1 minute.
