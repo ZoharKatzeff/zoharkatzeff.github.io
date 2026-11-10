@@ -16,10 +16,10 @@ def ids(spec):
 
 # Strongest first. Keep each to ~12-16 so nothing feels like a dump.
 SERVICES = {
-    "events": ids("beit-asaf 9 32 17 12 29 10 30 23 20 13 33 14, soldiers 2"),
+    "events": ids("beit-asaf 9 32, party 1, beit-asaf 17 12, party 2, beit-asaf 29 10 30 23 20 13 33 14, soldiers 2"),
     "portraits": ids("bw-portraits 6, flash 1, portraits 3, soldiers 1, flash 2, portraits 4, street 24,"
-                     "bw-portraits 10, flash 3, portraits 1, beit-asaf 15, portraits 2, flash 4"),
-    "commercial": ids("malka 2 13 21 24 7 18 11 26 9 5 15 22"),
+                     "bw-portraits 10, flash 3, street 43, beit-asaf 15, portraits 2, flash 4"),
+    "commercial": ids("malka 2, fitness 1, malka 13 21, fitness 2, malka 24 7 18 11 26 9 5 15 22"),
     "property": ids("architecture 1, drone 5, architecture 6 16 8, drone 6, architecture 12 4 9, drone 1, architecture 3 5"),
     "vehicles": ids("transport 4 13 5 1 14 11 9 7 3 12 6 8"),
     "artistic": ids("bw-portraits 5, drone 3, street 26 14 9 1 11 15 17 41 42 28 6 33, bw 3 7"),
@@ -30,6 +30,8 @@ HOME = ["self-portrait-001"]
 used = {p for lst in SERVICES.values() for p in lst} | set(HOME)
 missing = sorted(p for p in used if p not in sizes)
 assert not missing, f"missing photos: {missing}"
+no_file = sorted(p for p in used for sub in ("full", "thumb") if not os.path.exists(os.path.join(ROOT, "media", sub, p + ".jpg")))
+assert not no_file, f"photo files missing from media/ (run tools/build_media.py photos): {no_file}"
 
 out = {
     "sizes": {k: sizes[k] for k in sorted(used)},
