@@ -1,18 +1,34 @@
-# Zohar Katzeff – portfolio site
+# Zohar Katzeff – photography portfolio
 
-Static site (no build step). Open with any static host: Netlify, GitHub Pages, Cloudflare Pages.
+Static site (no build server). Hebrew + English.
+
+## Pages
+- `/` home: one photo, the name, the menu. Nothing written on the photo.
+- `/events/`, `/portraits/`, `/business/`, `/real-estate/`, `/street/`: one page per category, picked from the "עבודות" drop-down.
+- `/about/`: about text, how it works, contact + booking form (sends a WhatsApp message).
+
+## Links for clients
+The home page can open with a different photo, so a client sees their kind of work first:
+- `zoharkatzeff.github.io/?for=events`
+- `zoharkatzeff.github.io/?for=portraits`
+- `zoharkatzeff.github.io/?for=business`
+- `zoharkatzeff.github.io/?for=real-estate`
+- `zoharkatzeff.github.io/?for=street`
+
+Or send the category page straight away, e.g. `zoharkatzeff.github.io/portraits/`.
 
 ## Change things
-- **Text, services, projects, reels, hero slideshow**: top of `app.js` (Hebrew + English side by side).
-- **Static page text**: `index.html` – Hebrew is the element text, English is in `data-en="..."`.
-- **Which photos go where**: `tools/build_data.py`, then run `python tools/build_data.py`.
+- **Home photo, category names/texts, client-link photos**: top of `app.js` (`HOME_PHOTO`, `CATEGORIES`).
+- **About text and form**: `about/index.html` (Hebrew is the element text, English is in `data-en="..."`).
+- **Which photos are in each category**: `tools/build_data.py`, then `python tools/build_data.py`.
 - **New photos**: put edited JPGs in `../zohar-portfolio/media/full/`, run `python tools/build_media.py photos`, then `python tools/build_data.py`.
-- **Videos**: edit the `REELS` list in `tools/build_media.py`, run `python tools/build_media.py videos`.
-  Desert trek and rock'n'roll are auto-cut highlights (7 x 4.5s). Swap in proper 30s trailers when you have them.
+- **After changing style.css or app.js**: raise `VERSION` in `tools/build_pages.py` and run `python tools/build_pages.py` so browsers load the new files.
+
+Video is off the site for now. The clips are still in `media/video/` on this computer (not published; see `.gitignore`).
 
 ## Preview locally
 `python -m http.server 8778` in this folder, then open http://localhost:8778 (add `?lang=en` for English).
 
-## Live site
+## Publish
 https://zoharkatzeff.github.io (GitHub Pages, repo ZoharKatzeff/zoharkatzeff.github.io).
-To publish changes: `git add -A && git commit -m "update" && git push` — live in ~1 minute.
+`git add -A && git commit -m "update" && git push` — live in about a minute.

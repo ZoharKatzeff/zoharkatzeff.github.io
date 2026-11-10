@@ -3,178 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Zohar Katzeff · צילום סטילס ווידאו</title>
-<meta name="description" content="זוהר קאצף, צילום סטילס ווידאו. אירועים וארגונים, פורטרייטים וזוגות, תוכן לעסקים, נדל״ן ואדריכלות. Photo & video for events, brands, people and places.">
-<meta property="og:title" content="Zohar Katzeff · Photo & Video">
-<meta property="og:description" content="אירועים · פורטרייטים · תוכן לעסקים · נדל״ן. Events · Portraits · Brand content · Real estate.">
-<meta property="og:image" content="media/full/beit-asaf-032.jpg">
+<title>זוהר קאצף · צלם</title>
+<meta name="description" content="זוהר קאצף, צלם. אירועים וארגונים, פורטרייטים וזוגות, צילום לעסקים, נדל״ן ואדריכלות. Zohar Katzeff, photographer.">
+<meta property="og:title" content="Zohar Katzeff · זוהר קאצף">
+<meta property="og:description" content="צלם · Photographer">
+<meta property="og:image" content="https://zoharkatzeff.github.io/media/full/bw-portraits-005.jpg">
 <meta name="theme-color" content="#121110">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23121110'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%23e3a75f' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Heebo:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=8">
+<link rel="stylesheet" href="style.css?v=9">
 </head>
-<body>
-
-<header class="nav" id="nav">
-  <a class="brand" href="#top" aria-label="Zohar Katzeff">
-    <span class="brand-mark">Z</span>
-    <span class="brand-name">Zohar Katzeff</span>
-  </a>
-  <nav class="nav-links" aria-label="Main">
-    <a href="#services" data-en="Services">שירותים</a>
-    <a href="#projects" data-en="Projects">פרויקטים</a>
-    <a href="#reels" data-en="Video">וידאו</a>
-    <a href="#gallery" data-en="Gallery">גלריה</a>
-    <a href="#about" data-en="About">אודות</a>
-  </nav>
-  <div class="nav-end">
-    <button class="lang" id="langBtn" type="button" aria-label="Switch to English">EN</button>
-    <a href="#contact" class="btn btn-sm" data-en="Contact &amp; booking">ליצירת קשר והזמנה</a>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="hero" id="top">
-  <div class="hero-slides" id="heroSlides"></div>
-  <div class="hero-shade"></div>
-  <div class="hero-inner">
-    <p class="eyebrow" data-en="Stills &amp; video">צילום סטילס ווידאו</p>
-    <h1 class="hero-title"><span data-en="Zohar Katzeff">זוהר קאצף</span></h1>
-    <p class="hero-sub" data-en="For events, businesses, couples and real estate.<br>I look for the real moment, the one that happens between the planned shots.">לאירועים, לעסקים, לזוגות ולנדל״ן.<br>אני מחפש את הרגע האמיתי, זה שקורה בין התמונות המתוכננות.</p>
-    <div class="hero-ctas">
-      <a href="#contact" class="btn" data-en="Book a shoot">להזמנת צילום</a>
-      <a href="#services" class="btn btn-ghost" data-en="See the work">לעבודות</a>
-    </div>
-  </div>
-  <div class="hero-meta">
-    <span id="heroCaption"></span>
-    <div class="hero-dots" id="heroDots"></div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="section" id="services">
-  <div class="section-head">
-    <p class="eyebrow" data-en="What I shoot">מה אני מצלם</p>
-    <h2 data-en="Four ways to work together">ארבע דרכים לעבוד ביחד</h2>
-    <p class="lede" data-en="Photos, video, or both. Pick what you need and I'll plan the shoot around it.">תמונות, וידאו או שניהם. בוחרים מה צריך, ואני בונה את הצילום סביב זה.</p>
-  </div>
-  <div class="services" id="servicesGrid"></div>
-</section>
-
-<!-- PROJECTS -->
-<section class="section" id="projects">
-  <div class="section-head">
-    <p class="eyebrow" data-en="Case studies">עבודות מלאות</p>
-    <h2 data-en="Featured projects">פרויקטים נבחרים</h2>
-  </div>
-  <div class="projects" id="projectsGrid"></div>
-</section>
-
-<!-- REELS -->
-<section class="section section-dark" id="reels">
-  <div class="section-head">
-    <p class="eyebrow" data-en="Motion">תנועה</p>
-    <h2 data-en="Video &amp; reels">וידאו ורילסים</h2>
-    <p class="lede" data-en="Event films, drone, brand promos and edited reels with captions and motion graphics. Tap to watch with sound.">סרטי אירוע, רחפן, פרומו לעסקים ורילסים ערוכים עם כתוביות וגרפיקה. לחיצה לצפייה עם סאונד.</p>
-  </div>
-  <div class="reels" id="reelsGrid"></div>
-</section>
-
-<!-- GALLERY -->
-<section class="section" id="gallery">
-  <div class="section-head">
-    <p class="eyebrow" data-en="Gallery">גלריה</p>
-    <h2 data-en="All the work">כל העבודות</h2>
-  </div>
-  <div class="filters" id="filters" role="tablist"></div>
-  <div class="grid" id="grid"></div>
-</section>
-
-<!-- ABOUT -->
-<section class="section about" id="about">
-  <div class="about-img"><img src="media/full/portraits-003.jpg" alt="" loading="lazy" id="aboutImg"></div>
-  <div class="about-text">
-    <p class="eyebrow" data-en="About">אודות</p>
-    <h2 data-en="Behind the camera">מאחורי המצלמה</h2>
-    <p data-en="I'm Zohar, a photographer and video editor.<br>I have experience shooting on location in the desert, at the Dead Sea and on the beach, coffee carts at golden hour, drift days, and spontaneous photography on the streets of Israel.">אני זוהר, צלם ועורך וידאו.<br>יש לי ניסיון בצילומי שטח במדבר, ים המלח, חוף הים, עגלות קפה בשעת זהב, ימי דריפט וצילומים ספונטניים ברחובות ישראל.</p>
-    <p data-en="I also work with businesses and companies on social content: I shoot, edit and hand over reels that are ready to post, captions and graphics included.">כמו כן, אני עובד עם עסקים וחברות על תוכן לרשתות: מצלם, עורך ומוסר רילסים מוכנים לעלייה, כולל כתוביות וגרפיקה.</p>
-    <ol class="steps">
-      <li><strong data-en="Message me">שולחים הודעה</strong><span data-en="Tell me briefly what you're looking for, when and where.">מספרים בקצרה במה אתם מעוניינים, מתי ואיפה.</span></li>
-      <li><strong data-en="We plan it">מתכננים</strong><span data-en="We agree up front on what we shoot, where, and in what style.">מתאמים מראש מה מצלמים, איפה ובאיזה סגנון.</span></li>
-      <li><strong data-en="You get the edit">מקבלים</strong><span data-en="Edited photos and ready-to-post video.">תמונות ערוכות ווידאו מוכן לעלייה.</span></li>
-    </ol>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="contact-inner">
-    <div class="contact-copy">
-      <h2 data-en="Let's make something">בואו ניצור משהו ביחד</h2>
-      <p class="contact-label" data-en="Get in touch:">ליצירת קשר:</p>
-      <a class="btn btn-wa wa-jump" href="#bookForm" id="waJump">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-2-2l.8-1-1-2z" class="fill"/></svg>
-        <span data-en="Message me on WhatsApp">שלחו הודעה בוואטסאפ</span>
-      </a>
-      <div class="contact-links">
-        <a href="tel:+972526545250"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg><span dir="ltr">052-654-5250</span></a>
-        <a href="mailto:zoharkatzeff@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span dir="ltr">zoharkatzeff@gmail.com</span></a>
-        <a href="https://instagram.com/zohar_katzeff" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg><span dir="ltr">@zohar_katzeff</span></a>
-      </div>
-    </div>
-    <form class="form" id="bookForm" novalidate>
-      <label><span data-en="Your name">שם</span><input name="name" autocomplete="name" required></label>
-      <label><span data-en="What do you need?">מה צריך?</span>
-        <select name="service" id="serviceSelect"></select>
-      </label>
-      <label><span data-en="Date (if you know it)">תאריך (אם ידוע)</span><input name="date" type="date"></label>
-      <label class="full"><span data-en="Tell me a bit more">ספרו קצת יותר</span><textarea name="details" rows="4" data-en-placeholder="Location, how many people, photos or video..." placeholder="מיקום, כמה אנשים, תמונות או וידאו..."></textarea></label>
-      <button class="btn btn-wa full" type="submit">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8 18.7z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-2-2l.8-1-1-2z" class="fill"/></svg>
-        <span data-en="Send on WhatsApp">שליחה בוואטסאפ</span>
-      </button>
-      <p class="form-err" id="formErr" role="alert" hidden data-en="Please add your name.">נא למלא שם.</p>
-    </form>
-  </div>
-</section>
-
-<footer class="footer">
-  <span>© <span id="year"></span> Zohar Katzeff</span>
-  <a href="#top" data-en="Back to top ↑">חזרה למעלה ↑</a>
-</footer>
-
-<!-- Project panel -->
-<div class="panel" id="panel" aria-hidden="true" role="dialog" aria-modal="true">
-  <div class="panel-inner">
-    <button class="icon-btn panel-close" id="panelClose" aria-label="Close">✕</button>
-    <div id="panelBody"></div>
-  </div>
-</div>
-
-<!-- Photo lightbox -->
-<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
-  <button class="icon-btn lb-close" id="lbClose" aria-label="Close">✕</button>
-  <button class="icon-btn lb-arrow lb-prev" id="lbPrev" aria-label="Previous">‹</button>
-  <figure class="lb-figure">
-    <img id="lbImg" alt="">
-    <figcaption><span id="lbCat"></span><span id="lbCount"></span></figcaption>
-  </figure>
-  <button class="icon-btn lb-arrow lb-next" id="lbNext" aria-label="Next">›</button>
-</div>
-
-<!-- Video player -->
-<div class="player" id="player" aria-hidden="true" role="dialog" aria-modal="true">
-  <button class="icon-btn lb-close" id="playerClose" aria-label="Close">✕</button>
-  <figure class="player-figure">
-    <video id="playerVideo" controls playsinline preload="none"></video>
-    <figcaption id="playerCap"></figcaption>
-  </figure>
-</div>
-
-<script src="data/photos.js?v=8"></script>
-<script src="app.js?v=8"></script>
+<body data-page="home" data-base="">
+<header class="nav" id="nav"></header>
+<main class="home" id="main"></main>
+<footer class="footer" id="footer"></footer>
+<script src="data/photos.js?v=9"></script>
+<script src="app.js?v=9"></script>
 </body>
 </html>
