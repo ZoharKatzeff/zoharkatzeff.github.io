@@ -3,17 +3,18 @@
 Static site (no build server). Hebrew + English.
 
 ## Pages
-- `/` home: one photo, the name, the menu. Nothing written on the photo.
-- `/events/`, `/portraits/`, `/business/`, `/real-estate/`, `/street/`: one page per category, picked from the "עבודות" drop-down.
+- `/` home: Zohar's self-portrait, the name, the list of categories. Nothing written on the photo.
+- `/events/`, `/portraits/`, `/commercial/`, `/real-estate/`, `/vehicles/`, `/artistic/`: one page per category, picked from the "עבודות" drop-down.
 - `/about/`: about text, how it works, contact + booking form (sends a WhatsApp message).
 
 ## Links for clients
 The home page can open with a different photo, so a client sees their kind of work first:
 - `zoharkatzeff.github.io/?for=events`
 - `zoharkatzeff.github.io/?for=portraits`
-- `zoharkatzeff.github.io/?for=business`
+- `zoharkatzeff.github.io/?for=commercial`
 - `zoharkatzeff.github.io/?for=real-estate`
-- `zoharkatzeff.github.io/?for=street`
+- `zoharkatzeff.github.io/?for=vehicles`
+- `zoharkatzeff.github.io/?for=artistic`
 
 Or send the category page straight away, e.g. `zoharkatzeff.github.io/portraits/`.
 

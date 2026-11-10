@@ -7,16 +7,17 @@ Run: python tools/build_pages.py
 """
 import os
 
-VERSION = 9
+VERSION = 11
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # slug, Hebrew title, English title  (keep in sync with CATEGORIES in app.js)
 CATEGORIES = [
-    ("events", "אירועים וארגונים", "Events & organizations"),
-    ("portraits", "פורטרייטים וזוגות", "Portraits & couples"),
-    ("business", "צילום לעסקים", "Business"),
-    ("real-estate", "נדל״ן ואדריכלות", "Real estate & architecture"),
-    ("street", "רחוב ואישי", "Street & personal"),
+    ("events", "אירועים וקבוצות", "Events & Groups"),
+    ("portraits", "פורטרייטים", "Portraits"),
+    ("commercial", "צילום מסחרי", "Commercial"),
+    ("real-estate", "נדל״ן ואדריכלות", "Real Estate & Architecture"),
+    ("vehicles", "כלי תחבורה", "Vehicles"),
+    ("artistic", "אמנותי", "Artistic"),
 ]
 
 HEAD = """<!doctype html>
@@ -28,7 +29,7 @@ HEAD = """<!doctype html>
 <meta name="description" content="{desc}">
 <meta property="og:title" content="{og_title}">
 <meta property="og:description" content="צלם · Photographer">
-<meta property="og:image" content="https://zoharkatzeff.github.io/media/full/bw-portraits-005.jpg">
+<meta property="og:image" content="https://zoharkatzeff.github.io/media/full/self-portrait-001.jpg">
 <meta name="theme-color" content="#121110">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23121110'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%23e3a75f' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -68,8 +69,8 @@ def write(rel, html):
 
 
 write("index.html", page(
-    "home", "", "home", "זוהר קאצף · צלם",
-    "זוהר קאצף, צלם. אירועים וארגונים, פורטרייטים וזוגות, צילום לעסקים, נדל״ן ואדריכלות. Zohar Katzeff, photographer.",
+    "home", "", "page home", "זוהר קאצף · צלם",
+    "זוהר קאצף, צלם. אירועים וקבוצות, פורטרייטים, צילום מסחרי, נדל״ן ואדריכלות, כלי תחבורה ואמנותי. Zohar Katzeff, photographer.",
     "Zohar Katzeff · זוהר קאצף"))
 
 for slug, he, en in CATEGORIES:

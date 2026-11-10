@@ -2,41 +2,48 @@
 const PHONE_INTL = "972526545250";
 
 // The one photo on the home page.
-const HOME_PHOTO = "bw-portraits-005";
+const HOME_PHOTO = "self-portrait-001";
 
 // Each category is its own page at /<slug>/ (pages are made by tools/build_pages.py).
 // "lead" = the photo the home page opens with in a link made for that kind of client,
 // e.g. zoharkatzeff.github.io/?for=events
+// "book: false" = not offered in the booking form.
 const CATEGORIES = [
   {
     key: "events", slug: "events", lead: "beit-asaf-032",
-    he: "אירועים וארגונים", en: "Events & organizations",
-    heText: "מכינות, תנועות נוער, טיולים שנתיים, ימי חברה וספורט מוטורי. מתעד את האנרגיה, לא רק את מי שהגיע.",
-    enText: "Pre-army academies, youth groups, school trips, company days and motorsport. I capture the energy, not just who showed up.",
+    he: "אירועים וקבוצות", en: "Events & Groups",
+    heText: "מכינות, תנועות נוער, טיולים שנתיים, ימי חברה וקבוצות. מתעד את האנרגיה, לא רק את מי שהגיע.",
+    enText: "Pre-army academies, youth groups, school trips, company days and teams. I capture the energy, not just who showed up.",
   },
   {
-    key: "portraits", slug: "portraits", lead: "bw-portraits-005",
-    he: "פורטרייטים וזוגות", en: "Portraits & couples",
-    heText: "פורטרייט אישי וצילומי זוגיות לפני החתונה, כולל רחפן. תמונות שנראות כמוך ביום הכי טוב שלך.",
-    enText: "Personal portraits and couple shoots before the wedding, drone included. Photos that look like you on your best day.",
+    key: "portraits", slug: "portraits", lead: "portraits-003",
+    he: "פורטרייטים", en: "Portraits",
+    heText: "פורטרייט אישי וצילומי זוגיות לפני החתונה. תמונות שנראות כמוך ביום הכי טוב שלך.",
+    enText: "Personal portraits and couple shoots before the wedding. Photos that look like you on your best day.",
   },
   {
-    key: "business", slug: "business", lead: "malka-002",
-    he: "צילום לעסקים", en: "Business",
+    key: "commercial", slug: "commercial", lead: "malka-002",
+    he: "צילום מסחרי", en: "Commercial",
     heText: "צילומי אוכל, מקום ואנשים לרשתות החברתיות של העסק.",
     enText: "Food, place and people shots for your business's social media.",
   },
   {
     key: "property", slug: "real-estate", lead: "architecture-001",
-    he: "נדל״ן ואדריכלות", en: "Real estate & architecture",
+    he: "נדל״ן ואדריכלות", en: "Real Estate & Architecture",
     heText: "מבנים, חללים וצילומי רחפן למתווכים, צימרים, דירות להשכרה ואדריכלים.",
     enText: "Buildings, spaces and drone shots for realtors, holiday rentals and architects.",
   },
   {
-    key: "personal", slug: "street", lead: "bw-003",
-    he: "רחוב ואישי", en: "Street & personal",
-    heText: "צילומים ספונטניים ברחובות ישראל ופרויקטים אישיים.",
-    enText: "Spontaneous photos on the streets of Israel, and personal projects.",
+    key: "vehicles", slug: "vehicles", lead: "transport-013",
+    he: "כלי תחבורה", en: "Vehicles",
+    heText: "מכוניות, רכבות, סירות ומטוסים. ימי דריפט, מסלולים ותחבורה בתנועה.",
+    enText: "Cars, trains, boats and planes. Drift days, race tracks and transport in motion.",
+  },
+  {
+    key: "artistic", slug: "artistic", lead: "bw-portraits-005", book: false,
+    he: "אמנותי", en: "Artistic",
+    heText: "שחור-לבן, צילומים ספונטניים ברחובות ישראל ופרויקטים אישיים.",
+    enText: "Black and white, spontaneous street photos, and personal projects.",
   },
 ];
 // ========================================================
@@ -93,13 +100,15 @@ function renderHeader() {
           <svg class="menu-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="menu-list" id="menuList" hidden>
+          <a class="menu-home" href="${href("")}" ${PAGE === "home" ? 'aria-current="page"' : ""}>${tt("דף הבית", "Home")}</a>
           ${items}
           <a class="menu-about" href="${href("about/")}" ${PAGE === "about" ? 'aria-current="page"' : ""}>${tt("אודות", "About")}</a>
         </div>
       </div>
+      <a class="nav-link" href="${href("")}" ${PAGE === "home" ? 'aria-current="page"' : ""}>${tt("דף הבית", "Home")}</a>
       <a class="nav-link" href="${href("about/")}" ${PAGE === "about" ? 'aria-current="page"' : ""}>${tt("אודות", "About")}</a>
       <button class="lang" id="langBtn" type="button" aria-label="${tt("Switch to English", "עברית")}">${tt("EN", "עב")}</button>
-      <a href="${href("about/")}#contact" class="btn btn-sm">${tt("ליצירת קשר והזמנה", "Contact &amp; booking")}</a>
+      <a href="${href("about/")}#contact" class="btn btn-sm">${tt("ליצירת קשר והזמנה", "Contact &amp; Booking")}</a>
     </div>`;
   $("#langBtn").onclick = () => setLang(lang === "en" ? "he" : "en", true);
   const btn = $("#menuBtn"), list = $("#menuList");
@@ -123,15 +132,18 @@ function renderHome() {
   const forSlug = new URLSearchParams(location.search).get("for");
   const lead = CATEGORIES.find((c) => c.slug === forSlug)?.lead || HOME_PHOTO;
   const [w, h] = P.sizes[lead];
+  const alt = lead === HOME_PHOTO ? NAME() : tt("צילום של זוהר קאצף", "Photo by Zohar Katzeff");
   $("#main").innerHTML = `
-    <figure class="home-photo"><img src="${full(lead)}" width="${w}" height="${h}" alt="${tt("צילום של זוהר קאצף", "Photo by Zohar Katzeff")}" fetchpriority="high"></figure>
-    <div class="home-name">
-      <h1>${NAME()}</h1>
-      <p>${tt("צלם", "Photographer")}</p>
-    </div>
-    <nav class="home-cats" aria-label="${tt("קטגוריות", "Categories")}">
-      ${CATEGORIES.map((c) => `<a href="${href(c.slug + "/")}">${t(c)}</a>`).join("")}
-    </nav>`;
+    <figure class="home-photo"><img src="${full(lead)}" width="${w}" height="${h}" alt="${alt}" fetchpriority="high"></figure>
+    <div class="home-text">
+      <header class="page-head">
+        <h1>${NAME()}</h1>
+        <p class="lede">${tt("צלם", "Photographer")}</p>
+      </header>
+      <nav class="home-cats" aria-label="${tt("קטגוריות", "Categories")}">
+        ${CATEGORIES.map((c, i) => `<a href="${href(c.slug + "/")}"><span>0${i + 1}</span>${t(c)}</a>`).join("")}
+      </nav>
+    </div>`;
 }
 
 // ---------- Category page ----------
@@ -144,7 +156,7 @@ function renderCategory() {
     </header>
     <div class="grid" id="grid"></div>
     <div class="page-end">
-      <a class="btn" href="${href("about/")}?service=${cat.key}#contact">${tt("ליצירת קשר והזמנה", "Contact &amp; booking")}</a>
+      ${cat.book === false ? `<a class="btn" href="${href("about/")}#contact">${tt("ליצירת קשר והזמנה", "Contact &amp; Booking")}</a>` : `<a class="btn" href="${href("about/")}?service=${cat.key}#contact">${tt("ליצירת קשר והזמנה", "Contact &amp; Booking")}</a>`}
       <a class="next" href="${href(next.slug + "/")}">${tt("הבא", "Next")}: ${t(next)} <span aria-hidden="true">${tt("←", "→")}</span></a>
     </div>`;
   masonry($("#grid"), P.services[cat.key]);
@@ -239,7 +251,7 @@ if (lb) {
 const form = $("#bookForm"), sel = $("#serviceSelect");
 function renderSelect() {
   const v = sel.value || new URLSearchParams(location.search).get("service");
-  sel.innerHTML = CATEGORIES.filter((c) => c.key !== "personal").map((c) => `<option value="${c.key}">${t(c)}</option>`).join("") +
+  sel.innerHTML = CATEGORIES.filter((c) => c.book !== false).map((c) => `<option value="${c.key}">${t(c)}</option>`).join("") +
     `<option value="other">${tt("משהו אחר", "Something else")}</option>`;
   if (v && sel.querySelector(`option[value="${v}"]`)) sel.value = v;
 }
