@@ -125,6 +125,8 @@ html[lang="he"] .eyebrow { letter-spacing: .06em; font-size: 15px; }
   border-radius: var(--radius); animation: fade-in 1.2s ease both;
 }
 .home .page-head { margin-bottom: clamp(28px, 5vh, 48px); }
+/* The name on the home page is in Caveat (Latin only, so Hebrew falls back to the normal heading font) */
+.home .page-head h1 { font-family: "Caveat", var(--display); font-weight: 700; font-style: normal; letter-spacing: 0; font-size: clamp(56px, 7.5vw, 104px); line-height: 1; }
 .home-cats { display: grid; border-bottom: 1px solid var(--line); max-width: 560px; }
 .home-cats a {
   display: flex; align-items: baseline; gap: 18px; padding: 14px 0; border-top: 1px solid var(--line);
