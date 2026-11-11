@@ -21,7 +21,7 @@ SERVICES = {
                      "bw-portraits 10, flash 3, street 43, beit-asaf 15, flash 4"),
     "commercial": ids("malka 2, fitness 1, malka 13 21, fitness 2, malka 24 7 18 11 26 9 5 15 22"),
     "property": ids("architecture 1, drone 5, architecture 6 16 8, drone 6, architecture 12 4 9, drone 7, architecture 3 5"),
-    "vehicles": ids("transport 4 13 5 1 14 11 9 7 3 12 6 8"),
+    "vehicles": ids("transport 4 13 5 1 14 11 9 3 12 6 8"),
     "artistic": ids("bw-portraits 5, drone 3, bw 1, street 26 14, bw-street 1, street 9 1 11 15 17 41 42 6 33, bw 3 7"),
 }
 # Home page photo
