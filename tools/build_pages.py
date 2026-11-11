@@ -7,7 +7,7 @@ Run: python tools/build_pages.py
 """
 import os
 
-VERSION = 13
+VERSION = 14
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # slug, Hebrew title, English title  (keep in sync with CATEGORIES in app.js)
@@ -42,7 +42,7 @@ HEAD = """<!doctype html>
 LIGHTBOX = """<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
   <button class="icon-btn lb-close" id="lbClose" aria-label="Close">✕</button>
   <button class="icon-btn lb-arrow lb-prev" id="lbPrev" aria-label="Previous">‹</button>
-  <figure class="lb-figure"><img id="lbImg" alt=""><figcaption id="lbCount"></figcaption></figure>
+  <figure class="lb-figure"><img id="lbImg" alt=""><figcaption id="lbCount" dir="ltr"></figcaption></figure>
   <button class="icon-btn lb-arrow lb-next" id="lbNext" aria-label="Next">›</button>
 </div>
 """
