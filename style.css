@@ -148,7 +148,9 @@ html[lang="he"] .eyebrow { letter-spacing: .06em; font-size: 15px; }
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px;
   margin-top: clamp(56px, 9vh, 100px); padding-top: 36px; border-top: 1px solid var(--line);
 }
-.page-end .next { color: var(--muted); font-size: 16px; }
+.page-end .next { color: var(--muted); font-size: 16px; margin-inline-start: auto; }
+.btn-ghost { background: transparent; color: var(--text); border-color: rgba(242,237,228,.5); }
+.btn-ghost:hover { border-color: var(--text); }
 .page-end .next:hover { color: var(--text); }
 
 /* Masonry grid */

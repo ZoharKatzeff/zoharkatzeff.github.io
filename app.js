@@ -12,38 +12,38 @@ const CATEGORIES = [
   {
     key: "events", slug: "events", lead: "beit-asaf-032",
     he: "אירועים וקבוצות", en: "Events & Groups",
-    heText: "מכינות, תנועות נוער, טיולים שנתיים, ימי חברה וקבוצות. מתעד את האנרגיה, לא רק את מי שהגיע.",
-    enText: "Pre-army academies, youth groups, school trips, company days and teams. I capture the energy, not just who showed up.",
+    heText: "צילום אירועים, קבוצות וימי חברה.",
+    enText: "Photography for events, groups and company days.",
   },
   {
     key: "portraits", slug: "portraits", lead: "portraits-003",
     he: "פורטרייטים", en: "Portraits",
-    heText: "פורטרייט אישי וצילומי זוגיות לפני החתונה. תמונות שנראות כמוך ביום הכי טוב שלך.",
-    enText: "Personal portraits and couple shoots before the wedding. Photos that look like you on your best day.",
+    heText: "צילום פורטרייטים, זוגות ואירוסין.",
+    enText: "Photography for portraits, couples and engagements.",
   },
   {
     key: "commercial", slug: "commercial", lead: "malka-002",
     he: "צילום מסחרי", en: "Commercial",
-    heText: "צילומי אוכל, מקום ואנשים לרשתות החברתיות של העסק.",
-    enText: "Food, place and people shots for your business's social media.",
+    heText: "צילום לעסקים, מותגים ורשתות חברתיות.",
+    enText: "Photography for businesses, brands and social media.",
   },
   {
     key: "property", slug: "real-estate", lead: "architecture-001",
     he: "נדל״ן ואדריכלות", en: "Real Estate & Architecture",
-    heText: "מבנים, חללים וצילומי רחפן למתווכים, צימרים, דירות להשכרה ואדריכלים.",
-    enText: "Buildings, spaces and drone shots for realtors, holiday rentals and architects.",
+    heText: "צילום נכסים, חללים ואדריכלות.",
+    enText: "Photography for properties, interiors and architecture.",
   },
   {
     key: "vehicles", slug: "vehicles", lead: "transport-013",
     he: "כלי תחבורה", en: "Vehicles",
-    heText: "מכוניות, רכבות, סירות ומטוסים. ימי דריפט, מסלולים ותחבורה בתנועה.",
-    enText: "Cars, trains, boats and planes. Drift days, race tracks and transport in motion.",
+    heText: "צילום מכוניות, רכבות, סירות ומטוסים.",
+    enText: "Photography of cars, trains, boats and planes.",
   },
   {
     key: "artistic", slug: "artistic", lead: "bw-portraits-005", book: false,
     he: "אמנותי", en: "Artistic",
-    heText: "שחור-לבן, צילומים ספונטניים ברחובות ישראל ופרויקטים אישיים.",
-    enText: "Black and white, spontaneous street photos, and personal projects.",
+    heText: "צילום רחוב, שחור-לבן ופרויקטים אישיים.",
+    enText: "Photography of streets, black and white, and personal projects.",
   },
 ];
 // ========================================================
@@ -157,6 +157,7 @@ function renderCategory() {
     <div class="grid" id="grid"></div>
     <div class="page-end">
       ${cat.book === false ? `<a class="btn" href="${href("about/")}#contact">${tt("ליצירת קשר והזמנה", "Contact &amp; Booking")}</a>` : `<a class="btn" href="${href("about/")}?service=${cat.key}#contact">${tt("ליצירת קשר והזמנה", "Contact &amp; Booking")}</a>`}
+      <a class="btn btn-ghost" href="${href("")}"><span aria-hidden="true">${tt("→", "←")}</span> ${tt("חזרה לדף הבית", "Back to home")}</a>
       <a class="next" href="${href(next.slug + "/")}">${tt("הבא", "Next")}: ${t(next)} <span aria-hidden="true">${tt("←", "→")}</span></a>
     </div>`;
   masonry($("#grid"), P.services[cat.key]);

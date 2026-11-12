@@ -16,8 +16,8 @@ def ids(spec):
 
 # Strongest first. Keep each to ~12-16 so nothing feels like a dump.
 SERVICES = {
-    "events": ids("beit-asaf 9 32, party 1, beit-asaf 17 12, party 2, beit-asaf 29 10 30 23 20 13 33 14, soldiers 2"),
-    "portraits": ids("bw-portraits 6, flash 1, portraits 3, soldiers 1, flash 2, portraits 4, street 24,"
+    "events": ids("beit-asaf 9 32, party 1, street 24, beit-asaf 17 12, party 2, beit-asaf 29 10 30 23 20 13 33 14, soldiers 2"),
+    "portraits": ids("bw-portraits 6, flash 1, portraits 3, soldiers 1, flash 2, portraits 4,"
                      "bw-portraits 10, flash 3, street 43, beit-asaf 15, flash 4"),
     "commercial": ids("malka 2, fitness 1, malka 13 21, fitness 2, malka 24 7 18 11 26 9 5 15 22"),
     "property": ids("architecture 1, drone 5, architecture 6 16 8, drone 6, architecture 12 4 9, drone 7, architecture 3 5"),
