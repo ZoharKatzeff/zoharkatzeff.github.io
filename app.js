@@ -1,6 +1,13 @@
 // ================= Content you can edit =================
 const PHONE_INTL = "972526545250";
 
+// Social profiles, shown in the "Follow" section (footer of every page + about page).
+// To add Facebook later, copy the Instagram line and change it.
+const SOCIAL = [
+  { he: "אינסטגרם", en: "Instagram", handle: "@katzeff_photos", url: "https://www.instagram.com/katzeff_photos/",
+    icon: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" class="fill"/>' },
+];
+
 // The one photo on the home page.
 const HOME_PHOTO = "self-portrait-001";
 
@@ -122,9 +129,14 @@ const onScroll = () => nav.classList.toggle("scrolled", scrollY > 20);
 addEventListener("scroll", onScroll, { passive: true });
 onScroll();
 
+const socialLinks = () => SOCIAL.map((s) =>
+  `<a href="${s.url}" target="_blank" rel="noopener" aria-label="${t(s)} ${s.handle}"><svg viewBox="0 0 24 24" aria-hidden="true">${s.icon}</svg><span>${t(s)}</span></a>`).join("");
+
 function renderFooter() {
   $("#footer").innerHTML = `<span>© ${new Date().getFullYear()} Zohar Katzeff</span>
-    <a href="https://instagram.com/zohar_katzeff" target="_blank" rel="noopener" dir="ltr">@zohar_katzeff</a>`;
+    <div class="social"><span class="social-label">${tt("עקבו אחריי", "Follow me")}</span>${socialLinks()}</div>`;
+  const block = $("#follow");
+  if (block) block.innerHTML = `<p class="contact-label">${tt("עקבו אחריי:", "Follow me:")}</p><div class="social social-big">${socialLinks()}</div>`;
 }
 
 // ---------- Home: one photo, the name, the menu ----------
