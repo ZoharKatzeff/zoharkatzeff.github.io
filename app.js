@@ -175,48 +175,77 @@ function renderCategory() {
   masonry($("#grid"), P.services[cat.key]);
 }
 
-// ---------- Masonry grid ----------
+// ---------- Photo rows ----------
+// Each row is filled edge to edge with whole photos at their own shape (nothing cropped),
+// in list order, so the number in the viewer matches the order on the page.
 const revealer = new IntersectionObserver((entries) => {
   entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); revealer.unobserve(e.target); } });
 }, { rootMargin: "0px 0px -30px 0px" });
 
-const colCount = () => (innerWidth <= 1000 ? 2 : 3);
-let gridIds = null;
-function masonry(grid, ids) {
-  gridIds = ids;
-  const cols = colCount();
-  grid.dataset.cols = cols;
-  grid.innerHTML = "";
-  const colEls = [], heights = [];
-  for (let c = 0; c < cols; c++) {
-    const col = document.createElement("div");
-    col.className = "col"; grid.appendChild(col); colEls.push(col); heights.push(0);
-  }
-  ids.forEach((id, i) => {
-    const [w, h] = P.sizes[id];
-    const tile = document.createElement("div");
-    tile.className = "tile"; tile.tabIndex = 0;
-    tile.style.setProperty("--ar", `${w} / ${h}`);
-    tile.setAttribute("role", "button");
-    tile.setAttribute("aria-label", `${t(cat)} ${i + 1}`);
-    const img = document.createElement("img");
-    img.loading = "lazy"; img.decoding = "async"; img.width = w; img.height = h; img.alt = t(cat);
-    img.onload = () => img.classList.add("loaded");
-    img.src = thumb(id);
-    tile.appendChild(img);
-    tile.onclick = () => openLb(ids, i);
-    tile.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLb(ids, i); } };
-    const c = heights.indexOf(Math.min(...heights));
-    colEls[c].appendChild(tile);
-    heights[c] += h / w;
-    revealer.observe(tile);
-  });
-}
-addEventListener("resize", () => {
-  const g = $("#grid");
-  if (g && gridIds && +g.dataset.cols !== colCount()) masonry(g, gridIds);
+// lay out again when the grid's width changes (window resize, scrollbar showing up)
+let resizeT;
+const gridSizer = new ResizeObserver(() => {
+  clearTimeout(resizeT);
+  resizeT = setTimeout(() => {
+    const g = $("#grid");
+    if (g && gridIds && Math.abs(g.clientWidth - gridW) > 1) masonry(g, gridIds);
+  }, 120);
 });
 
+const rowTarget = (w) => (w < 600 ? 240 : w < 1000 ? 300 : 380);
+let gridIds = null, gridW = 0;
+function masonry(grid, ids) {
+  gridIds = ids;
+  gridSizer.disconnect(); gridSizer.observe(grid);
+  const W = grid.clientWidth; gridW = W;
+  const gap = parseFloat(getComputedStyle(grid).rowGap) || 0;
+  const H = rowTarget(W);
+  const ratio = (id) => P.sizes[id][0] / P.sizes[id][1];
+  const fitH = (row) => (W - gap * (row.length - 1)) / row.reduce((a, id) => a + ratio(id), 0);
+  // split into rows so every row fills the width and all rows stay close to the target height
+  // (tries every way of splitting and keeps the one with the most even rows)
+  const best = [0], cut = [0];
+  for (let j = 1; j <= ids.length; j++) {
+    best[j] = Infinity;
+    for (let i = Math.max(0, j - 7); i < j; i++) {
+      const h = fitH(ids.slice(i, j));
+      const off = Math.log(h / H);
+      const cost = best[i] + off * off * 10 + (h > H * 1.6 || h < H * 0.55 ? 50 : 0);
+      if (cost < best[j]) { best[j] = cost; cut[j] = i; }
+    }
+  }
+  const rows = [];
+  for (let j = ids.length; j > 0; j = cut[j]) rows.unshift(ids.slice(cut[j], j));
+  grid.innerHTML = "";
+  let n = 0;
+  rows.forEach((r) => {
+    const h = fitH(r);
+    const rowEl = document.createElement("div");
+    rowEl.className = "row"; rowEl.style.height = `${h}px`;
+    r.forEach((id) => {
+      const i = n++;
+      const [w, hh] = P.sizes[id];
+      const tw = Math.round(ratio(id) * h);
+      const tile = document.createElement("div");
+      tile.className = "tile"; tile.tabIndex = 0;
+      tile.style.flex = `${ratio(id) * 100} 1 0`; // x100: grow values under 1 would not fill the row
+      tile.setAttribute("role", "button");
+      tile.setAttribute("aria-label", `${t(cat)} ${i + 1}`);
+      const img = document.createElement("img");
+      img.loading = "lazy"; img.decoding = "async"; img.width = w; img.height = hh; img.alt = t(cat);
+      img.onload = () => img.classList.add("loaded");
+      img.srcset = `${thumb(id)} 720w, ${full(id)} 1800w`;
+      img.sizes = `${tw}px`;
+      img.src = thumb(id);
+      tile.appendChild(img);
+      tile.onclick = () => openLb(ids, i);
+      tile.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLb(ids, i); } };
+      rowEl.appendChild(tile);
+      revealer.observe(tile);
+    });
+    grid.appendChild(rowEl);
+  });
+}
 // ---------- Lightbox ----------
 const lb = $("#lightbox"), lbImg = $("#lbImg");
 let lbList = [], lbIdx = 0;
