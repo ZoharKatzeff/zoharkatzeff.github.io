@@ -83,9 +83,14 @@ function setLang(l, remember) {
   html.lang = l; html.dir = l === "en" ? "ltr" : "rtl";
   document.querySelectorAll("[data-en]").forEach((el) => (el.innerHTML = l === "en" ? el.dataset.en : el.dataset.he));
   document.querySelectorAll("[data-en-placeholder]").forEach((el) => (el.placeholder = l === "en" ? el.dataset.enPlaceholder : el.dataset.hePlaceholder));
-  document.title = cat ? `${t(cat)} · ${NAME()}`
-    : PAGE === "about" ? `${tt("אודות וצור קשר", "About & contact")} · ${NAME()}`
-    : `${NAME()} · ${tt("צלם", "Photographer")}`;
+  // titles match the ones in the page files (Google reads these)
+  const brand = tt("זוהר קאצף צלם", "Zohar Katzeff Photography");
+  document.title = cat ? `${t(cat)} · ${brand}`
+    : PAGE === "about" ? `${tt("אודות וצור קשר", "About & contact")} · ${brand}`
+    : `${NAME()} · ${tt("צלם אירועים, פורטרייטים, עסקים ונדל״ן", "Photographer for events, portraits, business & real estate")}`;
+  // the English version is its own address for Google (…/?lang=en)
+  const canon = document.querySelector('link[rel="canonical"]');
+  if (canon) { const u = canon.href.split("?")[0]; canon.href = l === "en" ? u + "?lang=en" : u; }
   if (remember) { try { localStorage.setItem("lang", l); } catch (e) {} }
   renderAll();
 }
