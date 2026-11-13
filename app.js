@@ -196,6 +196,7 @@ function masonry(grid, ids) {
     const [w, h] = P.sizes[id];
     const tile = document.createElement("div");
     tile.className = "tile"; tile.tabIndex = 0;
+    tile.style.setProperty("--ar", `${w} / ${h}`);
     tile.setAttribute("role", "button");
     tile.setAttribute("aria-label", `${t(cat)} ${i + 1}`);
     const img = document.createElement("img");

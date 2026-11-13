@@ -7,7 +7,7 @@ Run: python tools/build_pages.py
 """
 import os
 
-VERSION = 21
+VERSION = 22
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # slug, Hebrew title, English title  (keep in sync with CATEGORIES in app.js)
