@@ -9,14 +9,14 @@ Static site (no build server). Hebrew + English.
 
 ## Links for clients
 The home page can open with a different photo, so a client sees their kind of work first:
-- `zoharkatzeff.github.io/?for=events`
-- `zoharkatzeff.github.io/?for=portraits`
-- `zoharkatzeff.github.io/?for=commercial`
-- `zoharkatzeff.github.io/?for=real-estate`
-- `zoharkatzeff.github.io/?for=vehicles`
-- `zoharkatzeff.github.io/?for=artistic`
+- `zoharkatzeff.com/?for=events`
+- `zoharkatzeff.com/?for=portraits`
+- `zoharkatzeff.com/?for=commercial`
+- `zoharkatzeff.com/?for=real-estate`
+- `zoharkatzeff.com/?for=vehicles`
+- `zoharkatzeff.com/?for=artistic`
 
-Or send the category page straight away, e.g. `zoharkatzeff.github.io/portraits/`.
+Or send the category page straight away, e.g. `zoharkatzeff.com/portraits/`.
 
 ## Change things
 - **Home photo, category names/texts, client-link photos**: top of `app.js` (`HOME_PHOTO`, `CATEGORIES`).
@@ -31,5 +31,5 @@ Video is off the site for now. The clips are still in `media/video/` on this com
 `python -m http.server 8778` in this folder, then open http://localhost:8778 (add `?lang=en` for English).
 
 ## Publish
-https://zoharkatzeff.github.io (GitHub Pages, repo ZoharKatzeff/zoharkatzeff.github.io).
+https://zoharkatzeff.com (domain bought on Cloudflare, DNS there; hosted on GitHub Pages, repo ZoharKatzeff/zoharkatzeff.github.io).
 `git add -A && git commit -m "update" && git push` — live in about a minute.

@@ -6,7 +6,7 @@ const HOME_PHOTO = "self-portrait-001";
 
 // Each category is its own page at /<slug>/ (pages are made by tools/build_pages.py).
 // "lead" = the photo the home page opens with in a link made for that kind of client,
-// e.g. zoharkatzeff.github.io/?for=events
+// e.g. zoharkatzeff.com/?for=events
 // "book: false" = not offered in the booking form.
 const CATEGORIES = [
   {
