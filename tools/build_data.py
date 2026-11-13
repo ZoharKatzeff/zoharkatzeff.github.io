@@ -16,13 +16,13 @@ def ids(spec):
 
 # Strongest first. Keep each to ~12-16 so nothing feels like a dump.
 SERVICES = {
-    "events": ids("beit-asaf 9 32, party 1, street 24, beit-asaf 17, soldiers 3, party 2, beit-asaf 29, hike 2, beit-asaf 30 23, hike 1, beach 1, beit-asaf 33, soldiers 4 2"),
+    "events": ids("beit-asaf 9 32, party 1, street 24, beit-asaf 17, soldiers 3, party 2, beit-asaf 29, hike 2, beit-asaf 30 23, drone 3, beach 1, beit-asaf 33, soldiers 4 2"),
     "portraits": ids("bw-portraits 6, flash 1, portraits 3, soldiers 1, flash 2, portraits 4,"
                      "portraits 5, flash 3, street 43, beit-asaf 15, hike 1"),
     "commercial": ids("malka 2, fitness 1, malka 13 21, fitness 2, malka 24 7 18 11 26 9 5 15 22"),
     "property": ids("architecture 1, drone 5, architecture 6 16 8, drone 6, architecture 12 4 9, drone 7, architecture 3 5"),
     "vehicles": ids("transport 4 16 13 5 1 14 15 11 9 3 12 6 8"),
-    "artistic": ids("bw-portraits 5, drone 3, bw 1, street 26 14, bw-street 1, street 9 1 11 15 17 41 42 6 33, bw 3 7"),
+    "artistic": ids("bw-portraits 5, bw 1, street 26 14, bw-street 1, street 9 1 11 15 17 41 42 6 33, bw 3 7"),
 }
 # Home page photo
 HOME = ["self-portrait-001"]
