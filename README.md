@@ -27,6 +27,11 @@ Or send the category page straight away, e.g. `zoharkatzeff.com/portraits/`.
 
 Video is off the site for now. The clips are still in `media/video/` on this computer (not published; see `.gitignore`).
 
+## Google
+`tools/build_pages.py` also writes `robots.txt`, `sitemap.xml`, each page's canonical address and the
+business details Google reads (top of the home page). Titles/descriptions for Google are set there too.
+Search Console: property `zoharkatzeff.com` (Domain), sitemap `sitemap.xml`.
+
 ## Preview locally
 `python -m http.server 8778` in this folder, then open http://localhost:8778 (add `?lang=en` for English).
 
