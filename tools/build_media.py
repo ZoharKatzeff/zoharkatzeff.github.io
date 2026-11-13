@@ -41,6 +41,11 @@ EXTRA = {
     "fitness-002": os.path.join(DL, "zohar-new-photos", "gym-preacher-curl.jpg"),
     "drone-007": r"D:\my portfolio\drone.png",
     "bw-street-001": os.path.join(DL, "zohar-new-photos", "street-cart-bw.jpg"),
+    "soldiers-003": os.path.join(DL, "zohar-new-photos", "soldiers-group-view.jpg"),
+    "soldiers-004": os.path.join(DL, "zohar-new-photos", "soldiers-beret-ceremony.jpg"),
+    "hike-001": os.path.join(DL, "zohar-new-photos", "hiker-sky.jpg"),
+    "hike-002": os.path.join(DL, "zohar-new-photos", "flag-desert.jpg"),
+    "beach-001": os.path.join(DL, "zohar-new-photos", "beach-crawl.jpg"),
 }
 
 def photos():
