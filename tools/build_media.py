@@ -55,7 +55,7 @@ EXTRA = {
     "engagement-004": os.path.join(DL, "zohar-new-photos", "couple-grass.jpg"),
     "engagement-005": os.path.join(DL, "zohar-new-photos", "couple-sea-wide.jpg"),
     "engagement-006": os.path.join(DL, "zohar-new-photos", "couple-ring-hand.jpg"),
-    "engagement-007": os.path.join(DL, "zohar-new-photos", "couple-silhouette-lift.jpg"),
+    "engagement-009": os.path.join(DL, "zohar-new-photos", "couple-nose-laugh.jpg"),
     "engagement-008": os.path.join(DL, "zohar-new-photos", "couple-dip-beach.jpg"),
 }
 
