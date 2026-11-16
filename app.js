@@ -69,6 +69,9 @@ const NAME = () => tt("זוהר קאצף", "Zohar Katzeff");
 const cat = CATEGORIES.find((c) => c.slug === PAGE);
 
 // ---------- Language ----------
+// flags drawn as images (Windows shows flag emoji as plain letters)
+const FLAG_UK = `<svg class="flag" viewBox="0 0 60 30" aria-hidden="true"><clipPath id="fuk"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#fuk)" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></svg>`;
+const FLAG_IL = `<svg class="flag" viewBox="0 0 220 160" aria-hidden="true"><path fill="#fff" d="M0 0h220v160H0z"/><path fill="#0038b8" d="M0 15h220v25H0zM0 120h220v25H0z"/><path fill="none" stroke="#0038b8" stroke-width="5.5" d="M110 52.5l24.25 42H85.75zM110 107.5l-24.25-42h48.5z"/></svg>`;
 function initLang() {
   let saved = new URLSearchParams(location.search).get("lang");
   if (saved) { try { localStorage.setItem("lang", saved); } catch (e) {} }
@@ -119,7 +122,7 @@ function renderHeader() {
       </div>
       <a class="nav-link" href="${href("")}" ${PAGE === "home" ? 'aria-current="page"' : ""}>${tt("דף הבית", "Home")}</a>
       <a class="nav-link" href="${href("about/")}" ${PAGE === "about" ? 'aria-current="page"' : ""}>${tt("אודות", "About")}</a>
-      <button class="lang" id="langBtn" type="button" aria-label="${tt("Switch to English", "עברית")}">${tt("EN", "עב")}</button>
+      <button class="lang" id="langBtn" type="button" aria-label="${tt("Switch to English", "עברית")}">${tt(FLAG_UK, FLAG_IL)}<span>${tt("EN", "עב")}</span></button>
       <a href="${href("about/")}#contact" class="btn btn-sm">${tt("ליצירת קשר והזמנה", "Contact &amp; Booking")}</a>
     </div>`;
   $("#langBtn").onclick = () => setLang(lang === "en" ? "he" : "en", true);

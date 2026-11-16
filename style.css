@@ -111,6 +111,8 @@ html[lang="he"] .eyebrow { letter-spacing: .06em; font-size: 15px; }
   background: transparent; border: 1px solid var(--line); font-size: 14px; font-weight: 500;
 }
 .lang:hover { border-color: var(--text); }
+.lang { display: inline-flex; align-items: center; gap: 7px; }
+.lang .flag { width: 22px; height: 15px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,.12); flex: none; }
 @media (max-width: 720px) {
   .brand-name, .nav-link { display: none; }
   .menu-about, .menu-home { display: block; }
