@@ -49,6 +49,14 @@ EXTRA = {
     "portraits-005": os.path.join(DL, "zohar-new-photos", "portrait-laugh-night.jpg"),
     "transport-015": os.path.join(DL, "zohar-new-photos", "car-steering-wheel.jpg"),
     "transport-016": os.path.join(DL, "zohar-new-photos", "car-porsche-palms.jpg"),
+    "engagement-001": os.path.join(DL, "zohar-new-photos", "couple-drone-tracks.jpg"),
+    "engagement-002": os.path.join(DL, "zohar-new-photos", "couple-close-smile.jpg"),
+    "engagement-003": os.path.join(DL, "zohar-new-photos", "couple-ring-kiss.jpg"),
+    "engagement-004": os.path.join(DL, "zohar-new-photos", "couple-grass.jpg"),
+    "engagement-005": os.path.join(DL, "zohar-new-photos", "couple-sea-wide.jpg"),
+    "engagement-006": os.path.join(DL, "zohar-new-photos", "couple-ring-hand.jpg"),
+    "engagement-007": os.path.join(DL, "zohar-new-photos", "couple-silhouette-lift.jpg"),
+    "engagement-008": os.path.join(DL, "zohar-new-photos", "couple-dip-beach.jpg"),
 }
 
 def photos():
