@@ -105,6 +105,7 @@ html[lang="he"] .eyebrow { letter-spacing: .06em; font-size: 15px; }
 .menu-list a[aria-current] { color: var(--accent); }
 .menu-about, .menu-home { display: none; }
 .menu-about { border-top: 1px solid var(--line); border-radius: 0 0 9px 9px !important; margin-top: 4px; }
+.menu-list .menu-pkg { border-top: 0; margin-top: 0; }
 .menu-home { border-bottom: 1px solid var(--line); border-radius: 9px 9px 0 0 !important; margin-bottom: 4px; }
 .lang {
   height: 40px; min-width: 44px; padding: 0 12px; border-radius: 999px;
@@ -185,6 +186,28 @@ html[lang="he"] .eyebrow { letter-spacing: .06em; font-size: 15px; }
 .steps li::before { content: "0" counter(s); grid-row: span 2; color: var(--accent); font: 400 26px/1 "Instrument Serif", Georgia, serif; }
 .steps strong { font-weight: 500; }
 .steps span { color: var(--muted); font-size: 15.5px; }
+
+/* packages (about page) */
+.packages { padding: clamp(64px, 9vw, 120px) var(--gutter); border-top: 1px solid var(--line); }
+.packages-inner { max-width: 1240px; margin: 0 auto; }
+.packages h2 { margin-bottom: 14px; }
+.packages-lead { color: var(--text-soft); max-width: 60ch; margin: 0 0 34px; }
+.pkg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.pkg {
+  display: flex; flex-direction: column; gap: 8px; padding: 26px 26px 22px; border: 1px solid var(--line);
+  border-radius: var(--radius); background: var(--bg-2); transition: border-color .2s ease, transform .2s ease;
+}
+a.pkg:hover { border-color: var(--accent); transform: translateY(-2px); }
+.pkg h3 { font-size: clamp(24px, 2.2vw, 28px); }
+.pkg-meta { margin: 0; color: var(--muted); font-size: 15.5px; line-height: 1.55; }
+.pkg-count { margin: 6px 0 0; color: var(--accent); font-weight: 500; font-size: 16.5px; }
+.pkg-see { margin-top: auto; padding-top: 14px; display: inline-flex; align-items: center; gap: 8px; font-size: 14.5px; color: var(--text-soft); }
+.pkg-arrow { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; }
+html[dir="rtl"] .pkg-arrow { transform: scaleX(-1); }
+a.pkg:hover .pkg-see { color: var(--accent); }
+.packages-cta { margin-top: 30px; }
+@media (max-width: 960px) { .pkg-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .pkg-grid { grid-template-columns: 1fr; } .pkg { padding: 22px 20px 18px; } }
 
 .contact { padding: clamp(80px, 11vw, 140px) var(--gutter); background: var(--bg-2); }
 .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 90px); max-width: 1240px; margin: 0 auto; }

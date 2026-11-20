@@ -118,10 +118,12 @@ function renderHeader() {
           <a class="menu-home" href="${href("")}" ${PAGE === "home" ? 'aria-current="page"' : ""}>${tt("דף הבית", "Home")}</a>
           ${items}
           <a class="menu-about" href="${href("about/")}" ${PAGE === "about" ? 'aria-current="page"' : ""}>${tt("אודות", "About")}</a>
+          <a class="menu-about menu-pkg" href="${href("about/")}#packages">${tt("חבילות צילום", "Packages")}</a>
         </div>
       </div>
       <a class="nav-link" href="${href("")}" ${PAGE === "home" ? 'aria-current="page"' : ""}>${tt("דף הבית", "Home")}</a>
       <a class="nav-link" href="${href("about/")}" ${PAGE === "about" ? 'aria-current="page"' : ""}>${tt("אודות", "About")}</a>
+      <a class="nav-link" href="${href("about/")}#packages">${tt("חבילות", "Packages")}</a>
       <button class="lang" id="langBtn" type="button" aria-label="${tt("Switch to English", "עברית")}">${tt(FLAG_UK, FLAG_IL)}<span>${tt("EN", "עב")}</span></button>
       <a href="${href("about/")}#contact" class="btn btn-sm">${tt("ליצירת קשר והזמנה", "Contact &amp; Booking")}</a>
     </div>`;
