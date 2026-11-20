@@ -8,7 +8,7 @@ Run: python tools/build_pages.py
 """
 import os
 
-VERSION = 40
+VERSION = 41
 SITE = "https://zoharkatzeff.com/"
 AREA = "משמר דוד, מחסיה, תל אביב וכל הארץ"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
