@@ -215,6 +215,23 @@ html[lang="he"] .eyebrow { letter-spacing: .06em; font-size: 15px; }
 }
 .footer a:hover { color: var(--text); }
 .footer { align-items: center; flex-wrap: wrap; }
+
+/* floating Instagram + WhatsApp buttons */
+.fab {
+  position: fixed; z-index: 60; inset-inline-end: 16px; bottom: calc(16px + env(safe-area-inset-bottom));
+  display: flex; flex-direction: column; gap: 10px;
+}
+.fab a {
+  width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; color: #fff;
+  box-shadow: 0 4px 14px rgba(0,0,0,.22); transition: transform .2s ease;
+}
+.fab a:hover { transform: scale(1.07); }
+.fab svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.fab svg .fill { fill: currentColor; stroke: none; }
+.fab-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+.fab-wa { background: #25D366; }
+.fab-wa svg { width: 30px; height: 30px; }
+body.locked .fab { display: none; }
 .social { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
 .social a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; }
 .social svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.6; flex: none; }
