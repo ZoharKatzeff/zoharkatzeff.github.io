@@ -62,6 +62,8 @@ const PAGE = document.body.dataset.page || "home";
 const thumb = (id) => `${BASE}media/thumb/${id}.jpg`;
 const full = (id) => `${BASE}media/full/${id}.jpg`;
 const href = (path) => BASE + path || "./";
+// a part of the home page: just "#id" when already on it (so the page scrolls instead of reloading)
+const sec = (id) => (PAGE === "home" ? "" : BASE || "./") + "#" + id;
 let lang = "he";
 const t = (o, k = "") => o[lang + k];
 const tt = (he, en) => (lang === "en" ? en : he);
@@ -115,17 +117,17 @@ function renderHeader() {
           <svg class="menu-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="menu-list" id="menuList" hidden>
-          <a class="menu-home" href="${href("")}" ${PAGE === "home" ? 'aria-current="page"' : ""}>${tt("דף הבית", "Home")}</a>
+          <a class="menu-home" href="${sec("top")}">${tt("דף הבית", "Home")}</a>
           ${items}
-          <a class="menu-about" href="${href("about/")}" ${PAGE === "about" ? 'aria-current="page"' : ""}>${tt("אודות", "About")}</a>
-          <a class="menu-about menu-pkg" href="${href("about/")}#packages">${tt("חבילות צילום", "Packages")}</a>
+          <a class="menu-about" href="${sec("about")}">${tt("אודות", "About")}</a>
+          <a class="menu-about menu-pkg" href="${sec("packages")}">${tt("חבילות צילום", "Packages")}</a>
         </div>
       </div>
-      <a class="nav-link" href="${href("")}" ${PAGE === "home" ? 'aria-current="page"' : ""}>${tt("דף הבית", "Home")}</a>
-      <a class="nav-link" href="${href("about/")}" ${PAGE === "about" ? 'aria-current="page"' : ""}>${tt("אודות", "About")}</a>
-      <a class="nav-link" href="${href("about/")}#packages">${tt("חבילות", "Packages")}</a>
+      <a class="nav-link" href="${sec("top")}">${tt("דף הבית", "Home")}</a>
+      <a class="nav-link" href="${sec("about")}">${tt("אודות", "About")}</a>
+      <a class="nav-link" href="${sec("packages")}">${tt("חבילות", "Packages")}</a>
       <button class="lang" id="langBtn" type="button" aria-label="${tt("Switch to English", "עברית")}">${tt(FLAG_UK, FLAG_IL)}<span>${tt("EN", "עב")}</span></button>
-      <a href="${href("about/")}#contact" class="btn btn-sm">${tt("ליצירת קשר והזמנה", "Contact &amp; Booking")}</a>
+      <a href="${sec("contact")}" class="btn btn-sm">${tt("ליצירת קשר והזמנה", "Contact &amp; Booking")}</a>
     </div>`;
   $("#langBtn").onclick = () => setLang(lang === "en" ? "he" : "en", true);
   const btn = $("#menuBtn"), list = $("#menuList");
@@ -160,7 +162,7 @@ function renderHome() {
   const lead = CATEGORIES.find((c) => c.slug === forSlug)?.lead || HOME_PHOTO;
   const [w, h] = P.sizes[lead];
   const alt = lead === HOME_PHOTO ? NAME() : tt("צילום של זוהר קאצף", "Photo by Zohar Katzeff");
-  $("#main").innerHTML = `
+  $("#home").innerHTML = `
     <figure class="home-photo"><img src="${full(lead)}" width="${w}" height="${h}" alt="${alt}" fetchpriority="high"></figure>
     <div class="home-text">
       <header class="page-head">
@@ -183,7 +185,7 @@ function renderCategory() {
     </header>
     <div class="grid" id="grid"></div>
     <div class="page-end">
-      ${cat.book === false ? `<a class="btn" href="${href("about/")}#contact">${tt("ליצירת קשר והזמנה", "Contact &amp; Booking")}</a>` : `<a class="btn" href="${href("about/")}?service=${cat.key}#contact">${tt("ליצירת קשר והזמנה", "Contact &amp; Booking")}</a>`}
+      ${cat.book === false ? `<a class="btn" href="${sec("contact")}">${tt("ליצירת קשר והזמנה", "Contact &amp; Booking")}</a>` : `<a class="btn" href="${BASE || "./"}?service=${cat.key}#contact">${tt("ליצירת קשר והזמנה", "Contact &amp; Booking")}</a>`}
       <a class="btn btn-ghost" href="${href("")}"><span aria-hidden="true">${tt("→", "←")}</span> ${tt("חזרה לדף הבית", "Back to home")}</a>
       <a class="next" href="${href(next.slug + "/")}">${tt("הבא", "Next")}: ${t(next)} <span aria-hidden="true">${tt("←", "→")}</span></a>
     </div>`;
@@ -348,3 +350,7 @@ function renderAll() {
   if (form) renderSelect();
 }
 initLang();
+// coming from another page to /#about etc.: land on the section once photos have loaded and the layout is settled
+if (PAGE === "home" && location.hash.length > 1) addEventListener("load", () => {
+  try { document.querySelector(location.hash)?.scrollIntoView({ behavior: "instant" }); } catch (e) {}
+});

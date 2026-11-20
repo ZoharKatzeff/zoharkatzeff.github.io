@@ -1,13 +1,14 @@
 """Writes index.html and one page per category (events/, portraits/, ...).
 
 The pages are empty shells: app.js fills them from the CATEGORIES list.
-about/index.html is written by hand (it holds the about text and the form).
+The about text, packages and booking form are hand-written in tools/home_sections.html
+and placed on the home page; about/ only redirects to /#about.
 Bump VERSION when you change style.css or app.js so browsers load the new files.
 Run: python tools/build_pages.py
 """
 import os
 
-VERSION = 36
+VERSION = 38
 SITE = "https://zoharkatzeff.com/"
 AREA = "משמר דוד, מחסיה, תל אביב וכל הארץ"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -82,10 +83,10 @@ BUSINESS = """<script type="application/ld+json">
 """
 
 
-def page(page_id, base, main_class, title, desc, og_title, extra="", extra_fonts="", seo_html=""):
+def page(page_id, base, main_class, title, desc, og_title, extra="", extra_fonts="", seo_html="", sections=""):
     return HEAD.format(title=title, desc=desc, og_title=og_title, base=base, v=VERSION, extra_fonts=extra_fonts, seo=seo_html) + f"""<body data-page="{page_id}" data-base="{base}">
 <header class="nav" id="nav"></header>
-<main class="{main_class}" id="main"></main>
+{f'<main id="main"><div class="{main_class}" id="home"></div>{sections}</main>' if sections else f'<main class="{main_class}" id="main"></main>'}
 <footer class="footer" id="footer"></footer>
 {extra}<script src="{base}data/photos.js?v={VERSION}"></script>
 <script src="{base}app.js?v={VERSION}"></script>
@@ -106,7 +107,9 @@ write("index.html", page(
     "home", "", "page home", "זוהר קאצף · צלם אירועים, פורטרייטים, עסקים ונדל״ן",
     f"זוהר קאצף, צלם אירועים, אירוסין, פורטרייטים, עסקים ונדל״ן. {AREA}. Zohar Katzeff, photographer in Israel.",
     "Zohar Katzeff · זוהר קאצף", extra_fonts="&family=Caveat:wght@500;700",  # Caveat: the name on the home page
-    seo_html=seo("", BUSINESS)))
+    seo_html=seo("", BUSINESS),
+    # about, packages and contact live on the home page (hand-written in tools/home_sections.html)
+    sections=chr(10) + open(os.path.join(ROOT, "tools", "home_sections.html"), encoding="utf-8").read()))
 
 for slug, he, en, text in CATEGORIES:
     write(f"{slug}/index.html", page(
@@ -116,7 +119,7 @@ for slug, he, en, text in CATEGORIES:
 # robots.txt + sitemap.xml: tell Google which pages exist
 import datetime
 today = datetime.date.today().isoformat()
-paths = [""] + [c[0] + "/" for c in CATEGORIES] + ["about/"]
+paths = [""] + [c[0] + "/" for c in CATEGORIES]
 write("robots.txt", f"""User-agent: *
 Allow: /
 
@@ -131,13 +134,13 @@ write("sitemap.xml", f"""<?xml version="1.0" encoding="UTF-8"?>
 {urls}</urlset>
 """)
 
-# keep the version in about/index.html in step
-about = os.path.join(ROOT, "about", "index.html")
-if os.path.exists(about):
-    import re
-    s = open(about, encoding="utf-8").read()
-    s = re.sub(r"\?v=\d+", f"?v={VERSION}", s)
-    s = re.sub(r"<!-- seo -->.*?<!-- /seo -->\n", "", s, flags=re.S)
-    s = s.replace('<meta property="og:title"', seo("about/") + '<meta property="og:title"', 1)
-    open(about, "w", encoding="utf-8", newline="\n").write(s)
-    print("updated version in about/index.html")
+# the old about page now just sends people to the matching part of the home page
+write("about/index.html", """<!doctype html>
+<html lang="he"><head><meta charset="utf-8">
+<title>זוהר קאצף · צלם</title>
+<link rel="canonical" href="https://zoharkatzeff.com/">
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url=../#about">
+<script>location.replace("../" + location.search + (location.hash || "#about"));</script>
+</head><body><a href="../#about">zoharkatzeff.com</a></body></html>
+""")

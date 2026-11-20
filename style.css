@@ -180,7 +180,8 @@ html[lang="he"] .eyebrow { letter-spacing: .06em; font-size: 15px; }
 @media (max-width: 860px) { .about { grid-template-columns: 1fr; } }
 .about-img img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); }
 .about-text p { color: var(--text-soft); max-width: 56ch; }
-.about-text h1 { font-size: clamp(38px, 5vw, 60px); margin-bottom: 16px; }
+.about-text h1, .about-text .about-title { font-size: clamp(38px, 5vw, 60px); margin-bottom: 16px; }
+.about { border-top: 1px solid var(--line); }
 .steps { list-style: none; padding: 0; margin: 34px 0 0; display: grid; gap: 0; counter-reset: s; }
 .steps li { counter-increment: s; display: grid; grid-template-columns: 52px 1fr; gap: 0 10px; padding: 16px 0; border-top: 1px solid var(--line); }
 .steps li::before { content: "0" counter(s); grid-row: span 2; color: var(--accent); font: 400 26px/1 "Instrument Serif", Georgia, serif; }
