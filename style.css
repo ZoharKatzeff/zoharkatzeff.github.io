@@ -114,6 +114,8 @@ html[lang="he"] .eyebrow { letter-spacing: .06em; font-size: 15px; }
 .lang:hover { border-color: var(--text); }
 .lang { display: inline-flex; align-items: center; gap: 7px; }
 .lang .flag { width: 22px; height: 15px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,.12); flex: none; }
+/* four menu links + the button: drop the name next to the Z on mid-size screens */
+@media (max-width: 940px) { .brand-name { display: none; } }
 @media (max-width: 720px) {
   .brand-name, .nav-link { display: none; }
   .menu-about, .menu-home { display: block; }
@@ -206,7 +208,6 @@ a.pkg:hover { border-color: var(--accent); transform: translateY(-2px); }
 .pkg-arrow { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.6; }
 html[dir="rtl"] .pkg-arrow { transform: scaleX(-1); }
 a.pkg:hover .pkg-see { color: var(--accent); }
-.packages-cta { margin-top: 30px; }
 @media (max-width: 960px) { .pkg-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) { .pkg-grid { grid-template-columns: 1fr; } .pkg { padding: 22px 20px 18px; } }
 

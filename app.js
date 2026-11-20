@@ -119,13 +119,15 @@ function renderHeader() {
         <div class="menu-list" id="menuList" hidden>
           <a class="menu-home" href="${sec("top")}">${tt("דף הבית", "Home")}</a>
           ${items}
-          <a class="menu-about" href="${sec("about")}">${tt("אודות", "About")}</a>
-          <a class="menu-about menu-pkg" href="${sec("packages")}">${tt("חבילות צילום", "Packages")}</a>
+          <a class="menu-about" href="${sec("packages")}">${tt("חבילות צילום", "Packages")}</a>
+          <a class="menu-about menu-pkg" href="${sec("contact")}">${tt("צור קשר", "Contact")}</a>
+          <a class="menu-about menu-pkg" href="${sec("about")}">${tt("אודות", "About")}</a>
         </div>
       </div>
       <a class="nav-link" href="${sec("top")}">${tt("דף הבית", "Home")}</a>
-      <a class="nav-link" href="${sec("about")}">${tt("אודות", "About")}</a>
       <a class="nav-link" href="${sec("packages")}">${tt("חבילות", "Packages")}</a>
+      <a class="nav-link" href="${sec("contact")}">${tt("צור קשר", "Contact")}</a>
+      <a class="nav-link" href="${sec("about")}">${tt("אודות", "About")}</a>
       <button class="lang" id="langBtn" type="button" aria-label="${tt("Switch to English", "עברית")}">${tt(FLAG_UK, FLAG_IL)}<span>${tt("EN", "עב")}</span></button>
       <a href="${sec("contact")}" class="btn btn-sm">${tt("ליצירת קשר והזמנה", "Contact &amp; Booking")}</a>
     </div>`;
@@ -316,11 +318,6 @@ function renderSelect() {
   if (v && sel.querySelector(`option[value="${v}"]`)) sel.value = v;
 }
 if (form) {
-  $("#waJump").addEventListener("click", (e) => {
-    e.preventDefault();
-    form.scrollIntoView({ behavior: "smooth", block: "center" });
-    setTimeout(() => form.name.focus({ preventScroll: true }), 450);
-  });
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const f = e.target, name = f.name.value.trim();
