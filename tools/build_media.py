@@ -35,6 +35,7 @@ EXTRA = {
     "drone-005": os.path.join(GYM, "merged 3.jpg"),
     "drone-006": os.path.join(GYM, "merged 2.jpg"),
     "self-portrait-001": os.path.join(DL, "zohar-self-portrait.jpg"),  # home page photo
+    "about-001": os.path.join(DL, "zohar-new-photos", "about-portrait.jpg"),  # about section photo
     "party-001": os.path.join(DL, "zohar-new-photos", "party-mario.jpg"),
     "party-002": os.path.join(DL, "zohar-new-photos", "party-grandma.jpg"),
     "fitness-001": os.path.join(DL, "zohar-new-photos", "gym-cable-curl.jpg"),
