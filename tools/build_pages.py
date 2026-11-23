@@ -8,7 +8,7 @@ Run: python tools/build_pages.py
 """
 import os
 
-VERSION = 46
+VERSION = 45
 SITE = "https://zoharkatzeff.com/"
 AREA = "משמר דוד, מחסיה, תל אביב וכל הארץ"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -68,15 +68,15 @@ def seo(path, extra=""):
 
 BUSINESS = """<script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "ProfessionalService",
- "name": "Zohar Katz Photography · זוהר כץ צלם",
- "alternateName": ["זוהר כץ", "Zohar Katz"],
+ "name": "Zohar Katzeff Photography · זוהר קאצף צלם",
+ "alternateName": ["זוהר קאצף", "Zohar Katzeff"],
  "description": "צלם אירועים, אירוסין, פורטרייטים, עסקים ונדל״ן. Photographer for events, engagements, portraits, businesses and real estate.",
  "url": "https://zoharkatzeff.com/",
  "image": "https://zoharkatzeff.com/media/full/self-portrait-001.jpg",
  "telephone": "+972526545250",
  "areaServed": [{"@type": "Country", "name": "Israel"}, "משמר דוד", "מחסיה", "תל אביב"],
  "address": {"@type": "PostalAddress", "addressLocality": "Mishmar David", "addressCountry": "IL"},
- "founder": {"@type": "Person", "name": "Zohar Katz", "alternateName": "זוהר כץ", "jobTitle": "Photographer"},
+ "founder": {"@type": "Person", "name": "Zohar Katzeff", "alternateName": "זוהר קאצף", "jobTitle": "Photographer"},
  "sameAs": ["https://www.instagram.com/katzeff_photos/"],
  "knowsAbout": ["Event photography", "Portrait photography", "Engagement photography", "Commercial photography", "Real estate photography", "Architecture photography"]}
 </script>
@@ -104,17 +104,17 @@ def write(rel, html):
 
 
 write("index.html", page(
-    "home", "", "page home", "זוהר כץ · צלם אירועים, פורטרייטים, עסקים ונדל״ן",
-    f"זוהר כץ, צלם אירועים, אירוסין, פורטרייטים, עסקים ונדל״ן. {AREA}. Zohar Katz, photographer in Israel.",
-    "Zohar Katz · זוהר כץ", extra_fonts="&family=Caveat:wght@500;700",  # Caveat: the name on the home page
+    "home", "", "page home", "זוהר קאצף · צלם אירועים, פורטרייטים, עסקים ונדל״ן",
+    f"זוהר קאצף, צלם אירועים, אירוסין, פורטרייטים, עסקים ונדל״ן. {AREA}. Zohar Katzeff, photographer in Israel.",
+    "Zohar Katzeff · זוהר קאצף", extra_fonts="&family=Caveat:wght@500;700",  # Caveat: the name on the home page
     seo_html=seo("", BUSINESS),
     # about, packages and contact live on the home page (hand-written in tools/home_sections.html)
     sections=chr(10) + open(os.path.join(ROOT, "tools", "home_sections.html"), encoding="utf-8").read()))
 
 for slug, he, en, text in CATEGORIES:
     write(f"{slug}/index.html", page(
-        slug, "../", "page", f"{he} · זוהר כץ צלם", f"{text}. זוהר כץ, צלם · {AREA}. {en} photography by Zohar Katz.",
-        f"{en} · Zohar Katz", LIGHTBOX, seo_html=seo(slug + "/")))
+        slug, "../", "page", f"{he} · זוהר קאצף צלם", f"{text}. זוהר קאצף, צלם · {AREA}. {en} photography by Zohar Katzeff.",
+        f"{en} · Zohar Katzeff", LIGHTBOX, seo_html=seo(slug + "/")))
 
 # robots.txt + sitemap.xml: tell Google which pages exist
 import datetime
@@ -137,7 +137,7 @@ write("sitemap.xml", f"""<?xml version="1.0" encoding="UTF-8"?>
 # the old about page now just sends people to the matching part of the home page
 write("about/index.html", """<!doctype html>
 <html lang="he"><head><meta charset="utf-8">
-<title>זוהר כץ · צלם</title>
+<title>זוהר קאצף · צלם</title>
 <link rel="canonical" href="https://zoharkatzeff.com/">
 <meta name="robots" content="noindex">
 <meta http-equiv="refresh" content="0; url=../#about">

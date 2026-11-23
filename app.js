@@ -67,7 +67,7 @@ const sec = (id) => (PAGE === "home" ? "" : BASE || "./") + "#" + id;
 let lang = "he";
 const t = (o, k = "") => o[lang + k];
 const tt = (he, en) => (lang === "en" ? en : he);
-const NAME = () => tt("זוהר כץ", "Zohar Katz");
+const NAME = () => tt("זוהר קאצף", "Zohar Katzeff");
 const cat = CATEGORIES.find((c) => c.slug === PAGE);
 
 // ---------- Language ----------
@@ -89,7 +89,7 @@ function setLang(l, remember) {
   document.querySelectorAll("[data-en]").forEach((el) => (el.innerHTML = l === "en" ? el.dataset.en : el.dataset.he));
   document.querySelectorAll("[data-en-placeholder]").forEach((el) => (el.placeholder = l === "en" ? el.dataset.enPlaceholder : el.dataset.hePlaceholder));
   // titles match the ones in the page files (Google reads these)
-  const brand = tt("זוהר כץ צלם", "Zohar Katz Photography");
+  const brand = tt("זוהר קאצף צלם", "Zohar Katzeff Photography");
   document.title = cat ? `${t(cat)} · ${brand}`
     : PAGE === "about" ? `${tt("אודות וצור קשר", "About & contact")} · ${brand}`
     : `${NAME()} · ${tt("צלם אירועים, פורטרייטים, עסקים ונדל״ן", "Photographer for events, portraits, business & real estate")}`;
@@ -107,7 +107,7 @@ function renderHeader() {
     `<a href="${href(c.slug + "/")}" ${c === cat ? 'aria-current="page"' : ""}>${t(c)}</a>`).join("");
   h.innerHTML = `
     <a class="brand" href="${href("")}" aria-label="${NAME()}">
-      <span class="brand-mark">Z</span><span class="brand-name">Zohar Katz</span>
+      <span class="brand-mark">Z</span><span class="brand-name">Zohar Katzeff</span>
     </a>
     <div class="nav-end">
       <div class="menu" id="menu">
@@ -147,7 +147,7 @@ const socialLinks = () => SOCIAL.map((s) =>
   `<a href="${s.url}" target="_blank" rel="noopener" aria-label="${t(s)} ${s.handle}"><svg viewBox="0 0 24 24" aria-hidden="true">${s.icon}</svg><span>${t(s)}</span></a>`).join("");
 
 function renderFooter() {
-  $("#footer").innerHTML = `<span>© ${new Date().getFullYear()} Zohar Katz</span>`;
+  $("#footer").innerHTML = `<span>© ${new Date().getFullYear()} Zohar Katzeff</span>`;
   // floating Instagram + WhatsApp buttons, always on screen
   const ig = SOCIAL[0];
   let fab = $(".fab");
@@ -163,7 +163,7 @@ function renderHome() {
   const forSlug = new URLSearchParams(location.search).get("for");
   const lead = CATEGORIES.find((c) => c.slug === forSlug)?.lead || HOME_PHOTO;
   const [w, h] = P.sizes[lead];
-  const alt = lead === HOME_PHOTO ? NAME() : tt("צילום של זוהר כץ", "Photo by Zohar Katz");
+  const alt = lead === HOME_PHOTO ? NAME() : tt("צילום של זוהר קאצף", "Photo by Zohar Katzeff");
   $("#home").innerHTML = `
     <figure class="home-photo"><img src="${full(lead)}" width="${w}" height="${h}" alt="${alt}" fetchpriority="high"></figure>
     <div class="home-text">
